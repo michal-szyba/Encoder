@@ -7,20 +7,3 @@
 7: STU
 8: VWX
 9: YZ
-
-     if (position == 3) {
-                    position = 0;
-                }
-                position++;
-                if (Character.toUpperCase(c) == alphabet.charAt(i - 1)) {
-                    if (i % 3 == 0) {
-                        set = i / 3;
-                    } else {
-                        set = i / 3 + 1;
-                    }
-                    for (int j = 0; j < position; j++) {
-                        coded.append(set);
-                    }
-                    coded.append(" ");
-                    break;
-                }
