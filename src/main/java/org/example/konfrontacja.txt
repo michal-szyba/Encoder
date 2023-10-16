@@ -369,7 +369,7 @@ M: JużCitłumaczę.
 
 J: -dopatrzył się wady prawnej-
 
-M: JużCitłumaczę. JużCitłumaczę.
+M: Już Ci tłumaczę. Już Ci tłumaczę.
 
 J: -wady prawnej-
 
@@ -948,5 +948,4 @@ A: ???
 J: -kto się wyświetla we wszystkich rejestrach wierzycieli, dłużników w Polsce i którego ściga całe stado komorników, to ja Ci gratuluję humoru. I jak na kogoś, kto ś- strzela ślepakami.
 
 M: Ale Ty cymbale jebany, zrozum to, że Twój syn wjechał na czymś białym.
-51:02
 
