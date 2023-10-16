@@ -1,22 +1,33 @@
 package org.example;
 
 
+import org.example.encoder.Constants;
+import org.example.encoder.DecoderOne;
 import org.example.encoder.EncoderOne;
+import org.example.inspector.Inspector;
+import org.example.ioservice.FileService;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        EncoderOne encoderOne = new EncoderOne();
-        System.out.println("Encode or decode? (please answer with numbers: 1 or 2) \n 1. Encode \n 2. Decode ");
+        System.out.println("Encoding, decoding or searching a file? (please answer with numbers) \n1. Encode \n2. Decode \n3. Search ");
         Scanner scan = new Scanner(System.in);
         String decision = scan.next();
         switch (decision){
             case "1":
+                EncoderOne encoderOne = new EncoderOne();
                 encoderOne.encodeAlgOne();
                 break;
             case "2":
-                encoderOne.decodeAlgOne();
+                DecoderOne decoderOne = new DecoderOne();
+                decoderOne.decodeAlgOne();
+                break;
+            case "3":
+                Inspector inspector = new Inspector();
+                inspector.search();
+                break;
+
         }
     }
 

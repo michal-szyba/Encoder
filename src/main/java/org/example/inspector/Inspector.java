@@ -1,45 +1,47 @@
 package org.example.inspector;
 
+import org.example.encoder.Constants;
+import org.example.ioservice.FileService;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
+import java.util.regex.Pattern;
 
 public class Inspector {
+    private static final FileService fileService = new FileService();
     public static void search() {
-        String currentWorkingDirectory = System.getProperty("user.dir");
-        System.out.println("Current Working Directory: " + currentWorkingDirectory);
-        System.out.println("Enter file name");
-        Scanner scan3 = new Scanner(System.in);
-        String fileName = scan3.nextLine();
-        System.out.println("Enter the phrase that you are looking for");
-        String searched1 = scan3.nextLine().toLowerCase();
         Set<String> results = new HashSet<>();
-        //This method looks for files starting from current working directory.
-        // To help you with entering the correct path to your file, it also prints current working directory when you run it.
-        File file = new File(currentWorkingDirectory + File.separator + fileName + ".txt");
-        int counter = 0;
-        try (Scanner scan = new Scanner(file)) {
-            while (scan.hasNextLine()) {
-                String line = scan.nextLine();
-                int index = line.toLowerCase().indexOf(searched1);
-                while (index != -1) {
-                    counter++;
-                    results.add(line);
-                    index = line.toLowerCase().indexOf(searched1, index + 1);
+        int occurrences = 0;
+        File file = fileService.findFile();
+        System.out.println("What phrase are you looking for?");
+        Scanner scan = new Scanner(System.in);
+        String targetPhrase = scan.nextLine().toLowerCase();
+        String line = "";
+        String word = "";
+        try(Scanner fileScanner = new Scanner(file)) {
+            String regex = "(?i)(" + Pattern.quote(targetPhrase) + ")";
+            while(fileScanner.hasNextLine()){
+                line = fileScanner.nextLine();
+                Scanner lineScanner = new Scanner(line);
+                while(lineScanner.hasNext()){
+                    word = lineScanner.next().toLowerCase();
+                    if (word.contains(targetPhrase)){
+                        results.add(line.replaceAll(regex, Constants.ANSI_RED + targetPhrase + Constants.RESET_COLOR ));
+                        occurrences++;
+                    }
                 }
             }
-            for (String result : results) {
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found.");
+        }
+        if(occurrences > 0){
+            for(String result : results){
                 System.out.println(result);
             }
-            if (counter > 0) {
-                System.out.println("Occurrences: " + counter);
-            } else {
-                System.out.println("None");
-            }
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found");
+        } else {
+            System.out.println("No results.");
         }
+
     }
 }
