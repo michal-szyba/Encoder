@@ -1,9 +1,27 @@
-1: ABC
-2: DEF
-3: GHI
-4: JKL
-5: MNO
-6: PQR
-7: STU
-8: VWX
-9: YZ
+Pattern:
+
+A = 1              J = 4          S = 7
+B = 11             K = 44         T = 77
+C = 111            L = 444        U = 777
+D = 2              M = 5          V = 8
+E = 22             N = 55         W = 88
+F = 222            O = 555        X = 888
+G = 3              P = 6          Y = 9
+H = 33             Q = 66         Z = 99
+I = 333            R = 666
+
+space = "---"
+special characters like dots, comas etc. remain unchanged
+
+
+
+
+
+
+
+
+
+
+
+
+

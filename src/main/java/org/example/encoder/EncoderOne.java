@@ -10,8 +10,7 @@ public class EncoderOne {
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static FileService fileService = new FileService();
     public static String encodeAlgOne() {
-        //The pattern based on which this algorythm codes input String can be found in the 'keyboard.txt.' file.
-        //Right now this algorithm is not capable of encoding inputs that contain numbers.
+//        The pattern based on which this algorythm codes input String can be found in the 'keyboard.txt' file.
         System.out.println("Type input source: ");
         System.out.println("1: File");
         System.out.println("2: Type from keyboard");
@@ -54,7 +53,7 @@ public class EncoderOne {
                     }
                 }
             } else if (c >= '0' && c <= '9'){
-                int value = Integer.parseInt(String.valueOf(c)) + 1;
+                int value = Integer.parseInt(String.valueOf(c)) + 1; //encoding digits
                 for(int i = 0; i < value; i++){
                     coded.append("0");
                 }
@@ -62,7 +61,7 @@ public class EncoderOne {
             } else if (c == 32){
                 coded.append("--- "); //encoding spaces
             } else {
-                coded.append(c); //encoding anything else (dots, comas etc.)
+                coded.append(c).append(" "); //encoding anything else (dots, comas etc.)
             }
         }
         System.out.println(coded);
@@ -102,17 +101,16 @@ public class EncoderOne {
                 if(s.startsWith("0")){
                     int value = s.length() - 1;
                     decoded.append(value);
+                } else if(s.contains("---")){
+                    String toAdd = s.replace("---", " ");
+                    decoded.append(toAdd);
                 } else {
                     int cycle = Integer.parseInt(s.substring(0, 1));
                     int position = 3 * (cycle - 1) + s.length();
                     decoded.append(ALPHABET.charAt(position - 1));
                 }
             } catch (NumberFormatException e){
-                if(s.contains("-")) {
-                    decoded.append(" ");
-                } else{
-                    decoded.append(s);
-                }
+                decoded.append(s);
             }
         }
         System.out.println(decoded);

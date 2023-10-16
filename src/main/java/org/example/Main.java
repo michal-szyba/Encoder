@@ -18,7 +18,6 @@ public class Main {
             case "2":
                 encoderOne.decodeAlgOne();
         }
-
     }
 
 
