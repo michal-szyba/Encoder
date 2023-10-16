@@ -3,7 +3,6 @@ package org.example.ioservice;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.text.Normalizer;
 import java.util.Scanner;
 
 public class FileService {

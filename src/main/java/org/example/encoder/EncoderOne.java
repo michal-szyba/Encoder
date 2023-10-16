@@ -113,8 +113,6 @@ public class EncoderOne {
                 } else{
                     decoded.append(s);
                 }
-            } catch (StringIndexOutOfBoundsException e){
-
             }
         }
         System.out.println(decoded);

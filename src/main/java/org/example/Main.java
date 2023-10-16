@@ -3,7 +3,6 @@ package org.example;
 
 import org.example.encoder.EncoderOne;
 
-import java.text.Normalizer;
 import java.util.Scanner;
 
 public class Main {
